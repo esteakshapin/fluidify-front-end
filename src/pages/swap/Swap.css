@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.form-card {
+  background-color: var(--color-white);
+  max-width: 532px;
+  margin-right: auto;
+  margin-left: auto;
+  color: black;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  border-radius: 25px;
+}
+
+.tab-container {
+  background: #ffffff;
+  border-radius: 25px;
+  max-width: 208px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tab-nav {
+  width: 104px;
+  border-radius: 25px;
+  height: 66px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  float: left;
+}
+
+.tab-container .active {
+  background-color: var(--color-orange);
+}
+
+.tab-group {
+  border: 1px solid red;
+}
+
+.form-card input {
+  font-size: 16px;
+  line-height: 28px;
+  padding: 8px 16px;
+  min-height: 44px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  background-color: var(--color-white);
+
+  /* box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px; */
+}
+
+.form-card input:focus {
+  box-shadow: 1px -1px 0 1px rgba(0, 0, 255, 0.3),
+    -1px 1px 0 1px rgba(0, 0, 255, 0.3);
+}
+
+.wallet {
+  width: calc(100% - 32px);
+}
+
+.label {
+  text-align: start;
+  width: 100%;
+}
+
+.label > span,
+.helpText {
+  display: block;
+}
+
+.label-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.helpText {
+  margin-top: 10px;
+  padding-left: 10px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+
+  letter-spacing: 0.4px;
+
+  color: gray;
+}
+
+.label .focus {
+  color: rgb(84 105 212);
+}
+
+.label > span.required::after {
+  content: "*";
+  color: #dd6666;
+  margin-left: 0.125rem;
+}
+
+.input-amount-group {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+}
+
+.icon {
+  padding: 10px;
+  background: var(--color-orange);
+  color: white;
+  height: 100%;
+  text-align: center;
+  border: unset;
+  border-radius: 4px;
+}
+
+.input-container {
+  /* background-color: #dd6666; */
+  /* overflow: auto; */
+  text-align: start;
+  padding: 4px;
+}
+
+.inputgroup {
+  text-align: start;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.img,
+input,
+select {
+  display: inline-block;
+}
+
+.img {
+  padding: 10px;
+  /* background: var(--color-orange); */
+  color: white;
+  /* border: unset; */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  border-right-width: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  order: 0;
+}
+
+.img > img {
+  width: 100%;
+  max-width: 40px;
+  min-width: 35px;
+}
+
+.inputgroup .amount-input {
+  border-left-width: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  margin-right: 10px;
+  outline: none;
+  padding-left: 0px;
+  order: 1;
+}
+
+.inputgroup .amount-input:focus {
+  box-shadow: 1px -1px 0 1px rgba(0, 0, 255, 0.3),
+    1px 1px 0 1px rgba(0, 0, 255, 0.3);
+}
+
+.inputgroup .amount-input:focus + .img {
+  box-shadow: -1px -1px 0 1px rgba(0, 0, 255, 0.3),
+    -1px 1px 0 1px rgba(0, 0, 255, 0.3);
+}
+
+.inputgroup .amount-input:focus ~ .helpText {
+  color: rgb(84 105 212);
+}
+
+.token-select {
+  order: 3;
+  font-size: 16px;
+  line-height: 28px;
+  padding: 8px 16px;
+  min-height: 44px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  background-color: var(--color-white);
+}
+
+.token-select:focus {
+  box-shadow: 1px -1px 0 1px rgba(0, 0, 255, 0.3),
+    -1px 1px 0 1px rgba(0, 0, 255, 0.3);
+}

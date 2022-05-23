@@ -1,0 +1,27 @@
+:root {
+  --color-background-color: #252424;
+  --color-dark-blue: #0283d4;
+  --color-light-blue: #1abcfe;
+  --color-light-green: #1dc3ca;
+  --color-white: #efefef;
+  --color-red: #e54849;
+  --color-orange: #d8892f;
+  --color-green: #59b868;
+}
+
+.App {
+  height: 100vh;
+  background-color: var(--color-background-color);
+  color: var(--color-white);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.appBody {
+  overflow: auto;
+  flex-grow: 1;
+}
