@@ -1,5 +1,62 @@
-.NavBar {
-    height: auto;
-    background-color: gray;
-    overflow: auto;
+.navBar {
+    background-color: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5em 1em;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-white);
 }
+
+.navBar .spacer {
+    flex-grow: 2;
+}
+
+a.navigationLink {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+
+    padding: 0.5em;
+
+    /* white */
+
+    color: #efefef;
+    /* background-color: #59b868; */
+    margin-left: 1em;
+
+    text-decoration: none;
+}
+
+#navBarLogo {
+    max-height: 40px;
+}
+
+/* highlighting active link */
+.navBar .active {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+
+    color: var(--color-orange);
+}
+
+/* profile picture */
+.navBar #profileName {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--color-red);
+}
+
+/* TODO: implement mobile queries */
+/* display mobile navBar */
+@media only screen and (max-width: 700px) {}

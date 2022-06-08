@@ -1,15 +1,36 @@
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
-import Swap from './pages/swap/Swap'
+import Footer from './components/Footer/Footer';
+import { TokenContext } from './tokenContext';
+import SignIn from './components/SignIn/SignIn';
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <div className="appBody">
-        <Swap />
+      {/* navbar */}
+      <TokenContext.Provider value={"ads"}>
+        <NavBar>
+
+
+        </NavBar>
+      </TokenContext.Provider>
+      {/* body */}
+      <div className='bodyContent'>
+        <SignIn></SignIn>
+
       </div>
+
+      {/* spacer to push footer to the bottom of page */}
+      <div className="spacer"></div>
+
+      {/* footer */}
+      <Footer></Footer>
+
+
     </div>
+
+
+
   );
 }
 
