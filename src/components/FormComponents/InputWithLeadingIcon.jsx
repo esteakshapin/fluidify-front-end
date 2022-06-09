@@ -16,9 +16,9 @@ function InputWithLeadingIcon(props) {
           name={props.title}
           id={inputId}
           value={props.value}
-          placeholder={props.placeholder}
+          placeholder={props.placeholder != null ? props.placeholder : ""}
           onChange={props.handleChange}
-          type={props.type}
+          type={props.type != null ? props.type : ""}
         />
         <i className={iconName}></i>
       </div>

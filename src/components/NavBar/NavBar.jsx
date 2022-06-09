@@ -58,7 +58,7 @@ export class NavBar extends React.Component {
 
         <TokenContext.Consumer>
           {(value) =>
-            value == null ? <SignIn></SignIn> : <UserInfo></UserInfo>
+            value.token == null ? <SignIn></SignIn> : <UserInfo></UserInfo>
           }
         </TokenContext.Consumer>
       </div>

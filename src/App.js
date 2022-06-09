@@ -5,26 +5,29 @@ import { TokenContext } from "./tokenContext";
 import SignIn from "./components/SignIn/SignIn";
 
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 const Home = () => {
   return <div style={{ color: "blue", backgroundColor: "red" }}>HOME</div>;
 };
 
 function App() {
+  const [token, setToken] = useState(null);
+
   return (
     <div className="App">
       {/* navbar */}
-      <TokenContext.Provider value={null}>
+      <TokenContext.Provider value={{ token, setToken }}>
         <NavBar></NavBar>
-      </TokenContext.Provider>
 
-      {/* body */}
-      <div className="bodyContent">
-        <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/signIn" element={<SignIn />}></Route>
-        </Routes>
-      </div>
+        {/* body */}
+        <div className="bodyContent">
+          <Routes>
+            <Route path="/" element={<Home></Home>}></Route>
+            <Route path="/signIn" element={<SignIn />}></Route>
+          </Routes>
+        </div>
+      </TokenContext.Provider>
 
       {/* footer */}
       <Footer></Footer>

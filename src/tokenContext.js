@@ -1,3 +1,6 @@
-import React from 'react';
+import React from "react";
 
-export const TokenContext = React.createContext();
+export const TokenContext = React.createContext({
+  token: null,
+  setToken: (token) => {},
+});
