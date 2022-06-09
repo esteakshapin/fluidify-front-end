@@ -24,15 +24,18 @@ function SignIn() {
               title="password"
               icon="fa-lock"
             ></InputWithLeadingIcon>
-            <a
-              href="https://analytics.fluidefi.com/password_reset/"
-              target="_blank"
-              id="forgotText"
-              rel="noreferrer"
-            >
-              {" "}
-              forgot password?{" "}
-            </a>
+            <div className="forgotTextWrapper">
+              <a
+                href="https://analytics.fluidefi.com/password_reset/"
+                target="_blank"
+                id="forgotText"
+                rel="noreferrer"
+              >
+                {" "}
+                forgot password?{" "}
+              </a>
+            </div>
+
             <div className="buttonWrapper">
               <DefaultButton></DefaultButton>
             </div>

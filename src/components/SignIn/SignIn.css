@@ -37,11 +37,16 @@
 }
 
 .inputGroup > * {
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.forgotTextWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 #forgotText {
-  float: right;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -57,4 +62,6 @@
 
 .signInContainer .buttonWrapper {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
