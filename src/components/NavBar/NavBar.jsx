@@ -1,49 +1,68 @@
-import React from "react"
+import React from "react";
 import { TokenContext } from "../../tokenContext";
+import { NavLink } from "react-router-dom";
 
-import './NavBar.css';
+import "./NavBar.css";
 
 const SignIn = () => {
-    return (
-        <a href="./signIn" className="navigationLink" id="signIn">Sign In</a>
-    );
-}
+  return (
+    <NavLink to="/signIn" className="navigationLink">
+      Sign In
+    </NavLink>
+  );
+};
 
 const UserInfo = () => {
-    return (
-        <a href="./signIn" className="navigationLink" id="signIn">Welcome <span id="profileName">User</span></a>
-    );
-}
+  return (
+    <NavLink to="/user" className="navigationLink">
+      {({ isActive }) => (
+        <div>
+          Welcome{" "}
+          <span className={"profileName " + (isActive ? "active" : "")}>
+            User
+          </span>
+        </div>
+      )}
+    </NavLink>
+  );
+};
 
 export class NavBar extends React.Component {
+  render() {
+    return (
+      <div className="navBar">
+        <a href="/">
+          <img
+            src="https://analytics.fluidefi.com/static/img/fluidefi_logo_40.png"
+            alt="Fluidefi Logo"
+            id="navBarLogo"
+          />
+        </a>
 
-    render() {
-        return (
-            <div className="navBar">
-                <a href="/">
-                    <img
-                        src="https://analytics.fluidefi.com/static/img/fluidefi_logo_40.png"
-                        alt="Fluidefi Logo"
-                        id="navBarLogo"
-                    />
-                </a>
+        <NavLink to="/" className="navigationLink">
+          Home
+        </NavLink>
 
-                <a href="./home" className="navigationLink" id="home">Home</a>
+        <NavLink to="/swap" className="navigationLink">
+          Swap
+        </NavLink>
 
-                <a href="./swap" className="active navigationLink" id="swap">Swap</a>
+        <NavLink to="/pool" className="navigationLink">
+          Pool
+        </NavLink>
+        <NavLink to="/contactUs" className="navigationLink">
+          Contact Us
+        </NavLink>
 
-                <a href="./contactUs" className="navigationLink" id="pool">Pool</a>
+        <div className="spacer"></div>
 
-                <a href="./contactUs" className="navigationLink" id="contactUs">Contact Us</a>
-
-                <div className="spacer"></div>
-
-                <TokenContext.Consumer>
-                    {value => value == null ? <SignIn></SignIn> : <UserInfo></UserInfo>}
-                </TokenContext.Consumer>
-
-            </div>
-        );
-    }
+        <TokenContext.Consumer>
+          {(value) =>
+            value == null ? <SignIn></SignIn> : <UserInfo></UserInfo>
+          }
+        </TokenContext.Consumer>
+      </div>
+    );
+  }
 }
 export default NavBar;
