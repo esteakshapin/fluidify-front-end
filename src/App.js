@@ -11,13 +11,11 @@ function App() {
       <TokenContext.Provider value={"ads"}>
         <NavBar></NavBar>
       </TokenContext.Provider>
+
       {/* body */}
       <div className="bodyContent">
         <SignIn></SignIn>
       </div>
-
-      {/* spacer to push footer to the bottom of page */}
-      {/* <div className="spacer"></div> */}
 
       {/* footer */}
       <Footer></Footer>

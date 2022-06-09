@@ -3,6 +3,7 @@ import InputWithLeadingIcon from "../FormComponents/InputWithLeadingIcon";
 import PaperContainer from "../PaperContainer";
 import "./SignIn.css";
 import SignInFormFooter from "./SignInFormFooter";
+import DefaultButton from "../FormComponents/DefaultButton";
 
 function SignIn() {
   return (
@@ -32,9 +33,9 @@ function SignIn() {
               {" "}
               forgot password?{" "}
             </a>
-            <button type="button" onclick="alert('Hello world!')">
-              Click Me!
-            </button>
+            <div className="buttonWrapper">
+              <DefaultButton></DefaultButton>
+            </div>
           </div>
 
           {/* <!-- form footer --> */}
