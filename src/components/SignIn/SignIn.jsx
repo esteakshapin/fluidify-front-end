@@ -1,4 +1,5 @@
 import React from 'react'
+import InputWithLeadingIcon from '../FormComponents/InputWithLeadingIcon';
 import PaperContainer from '../PaperContainer';
 import './SignIn.css';
 
@@ -14,28 +15,12 @@ function SignIn() {
                     </div>
 
                     <div className="inputGroup">
-                        <div className="inputAndTitleContainer">
-                            <h3>username</h3>
-
-                            <div className="inputWithLeadingIcon">
-                                <input name="txtName" id="userNameInput" />
-                                <i className="fa-solid fa-user fa-fw"></i>
-                            </div>
-                        </div>
-                        <div className="inputAndTitleContainer">
-                            <h3>password</h3>
-
-                            <div className="inputWithLeadingIcon">
-                                <input name="txtName" id="userNameInput" />
-                                <i className="fa-solid fa-lock fa-fw"></i>
-                            </div>
-                        </div>
+                        <InputWithLeadingIcon title="username" icon="fa-user"></InputWithLeadingIcon>
+                        <InputWithLeadingIcon title="password" icon="fa-lock"></InputWithLeadingIcon>
                         <a
                             href="https://analytics.fluidefi.com/password_reset/"
                             target="_blank"
-                            id="forgotText" rel="noreferrer"
-                        >forgot password?</a
-                        >
+                            id="forgotText" rel="noreferrer"> forgot password? </a>
                         <button type="button" onclick="alert('Hello world!')">Click Me!</button>
                     </div>
 

@@ -1,0 +1,34 @@
+.inputAndTitleContainer h3 {
+    margin: 0;
+    padding: 0;
+
+    margin-bottom: 0.5rem;
+
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.3125rem;
+
+    /* Background-color */
+
+    color: #252424;
+}
+
+.inputWithLeadingIcon {
+    /* background-color: #0283d4; */
+    position: relative;
+}
+
+.inputWithLeadingIcon input {
+    padding-left: var(--input-with-icon-padding-left);
+}
+
+.inputWithLeadingIcon i {
+    position: absolute;
+    left: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: var(--color-slate-gray);
+}
