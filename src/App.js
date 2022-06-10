@@ -4,7 +4,7 @@ import Footer from "./components/Footer/Footer";
 import { TokenContext } from "./tokenContext";
 import SignIn from "./components/SignIn/SignIn";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 
 const Home = () => {
@@ -23,8 +23,14 @@ function App() {
         {/* body */}
         <div className="bodyContent">
           <Routes>
-            <Route path="/" element={<Home></Home>}></Route>
-            <Route path="/signIn" element={<SignIn />}></Route>
+            <Route
+              path="/"
+              element={token ? <Home></Home> : <Navigate to="/signIn" />}
+            ></Route>
+            <Route
+              path="/signIn"
+              element={token ? <Navigate to="/" /> : <SignIn />}
+            ></Route>
           </Routes>
         </div>
       </TokenContext.Provider>

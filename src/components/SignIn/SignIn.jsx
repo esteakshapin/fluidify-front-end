@@ -10,7 +10,9 @@ import axios from "axios";
 import { AUTH } from "../../urls";
 
 function SignIn() {
-  const { setToken } = useContext(TokenContext);
+  const { token, setToken } = useContext(TokenContext);
+
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const [formData, setFormData] = useState({
     username: "",
@@ -18,33 +20,19 @@ function SignIn() {
   });
 
   const handleChange = (e) => {
-    console.log("target" + e.target.name);
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(formData);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = new FormData();
-    data.append("username", formData.username);
-    data.append("password", formData.password);
+    console.log(formData);
 
-    const config = {
-      headers: { "content-type": "multipart/form-data" },
-    };
+    let res = await logInAPICall(formData.username, formData.password);
 
-    let res = null;
+    console.log(res);
 
-    try {
-      res = await axios.post(AUTH, data, config);
-    } catch (err) {
-      console.log("error");
-    }
-
-    // logInAPICall(formData.username, formData.password).then((res) =>
-    //   setToken(res.data)
-    // );
+    setToken(res.data);
   };
 
   return (

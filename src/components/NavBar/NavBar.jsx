@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { TokenContext } from "../../tokenContext";
 import { NavLink } from "react-router-dom";
 
 import "./NavBar.css";
+import { logOut } from "../../logic/logInAPICall";
 
 const SignIn = () => {
   return (
@@ -12,12 +13,16 @@ const SignIn = () => {
   );
 };
 
-const UserInfo = () => {
+const UserInfo = (props) => {
   return (
-    <NavLink to="/user" className="navigationLink">
+    <NavLink
+      to="/signIn"
+      className="navigationLink"
+      onClick={(e) => props.setToken(null)}
+    >
       {({ isActive }) => (
         <div>
-          Welcome{" "}
+          Log Out{" "}
           <span className={"profileName " + (isActive ? "active" : "")}>
             User
           </span>
@@ -58,7 +63,11 @@ export class NavBar extends React.Component {
 
         <TokenContext.Consumer>
           {(value) =>
-            value.token == null ? <SignIn></SignIn> : <UserInfo></UserInfo>
+            value.token == null ? (
+              <SignIn></SignIn>
+            ) : (
+              <UserInfo setToken={value.setToken}></UserInfo>
+            )
           }
         </TokenContext.Consumer>
       </div>
