@@ -1,121 +1,34 @@
-.inputTitle {
-  display: flex;
-  justify-content: space-between;
-}
-
 .inputAndTitleContainer h3 {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 300;
-  font-size: 0.875rem;
-  line-height: 1.3125rem;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.3125rem;
 
-  /* Background-color */
+    /* Background-color */
 
-  color: #252424;
+    color: #252424;
 }
 
 .inputWithLeadingIcon {
-  /* background-color: #0283d4; */
-  position: relative;
-  --input-with-icon-padding-left: 3rem;
+    /* background-color: #0283d4; */
+    position: relative;
 }
 
 .inputWithLeadingIcon input {
-  padding: 0.75rem;
-  border: 0px;
-
-  /* setting width to be (size of the container - [padding left + padding right]) */
-  width: calc(
-    100% - var(--input-with-icon-padding-left) - var(--input-padding)
-  );
-  padding-left: var(--input-with-icon-padding-left);
-
-  border-bottom: 1px solid var(--color-slate-gray);
-  outline: none;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 0.75rem;
-  line-height: 1.125rem;
-}
-
-.inputWithLeadingIcon input:focus {
-  outline: 1px solid var(--color-slate-gray);
+    padding-left: var(--input-with-icon-padding-left);
 }
 
 .inputWithLeadingIcon i {
-  position: absolute;
-  left: 0.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1rem;
-  color: var(--color-slate-gray);
-}
-
-/* toggle switch borrowed from w3school */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 37px;
-  height: 21px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--color-slate-gray);
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 17px;
-  width: 17px;
-  left: 2px;
-  bottom: 2px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-input:checked + .slider {
-  background-color: var(--color-light-green);
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px var(--color-light-green);
-}
-
-input:checked + .slider:before {
-  --transform-px: 16px;
-  -webkit-transform: translateX(var(--transform-px));
-  -ms-transform: translateX(var(--transform-px));
-  transform: translateX(var(--transform-px));
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
+    position: absolute;
+    left: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: var(--color-slate-gray);
 }

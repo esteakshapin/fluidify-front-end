@@ -4,41 +4,27 @@ import Footer from "./components/Footer/Footer";
 import { TokenContext } from "./tokenContext";
 import SignIn from "./components/SignIn/SignIn";
 
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useState } from "react";
-import Swap from "./components/Swap/Swap";
+import { Routes, Route } from "react-router-dom";
 
 const Home = () => {
   return <div style={{ color: "blue", backgroundColor: "red" }}>HOME</div>;
 };
 
 function App() {
-  const [token, setToken] = useState(null);
-
   return (
     <div className="App">
       {/* navbar */}
-      <TokenContext.Provider value={{ token, setToken }}>
+      <TokenContext.Provider value={null}>
         <NavBar></NavBar>
-
-        {/* body */}
-        <div className="bodyContent">
-          <Routes>
-            <Route
-              path="/"
-              element={token ? <Home></Home> : <Navigate to="/signIn" />}
-            ></Route>
-            <Route
-              path="/swap"
-              element={token ? <Swap></Swap> : <Navigate to="/signIn" />}
-            ></Route>
-            <Route
-              path="/signIn"
-              element={token ? <Navigate to="/" /> : <SignIn />}
-            ></Route>
-          </Routes>
-        </div>
       </TokenContext.Provider>
+
+      {/* body */}
+      <div className="bodyContent">
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/signIn" element={<SignIn />}></Route>
+        </Routes>
+      </div>
 
       {/* footer */}
       <Footer></Footer>
