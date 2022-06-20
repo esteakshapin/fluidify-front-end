@@ -5,7 +5,7 @@ function DefaultButton(props) {
   const btnClass = "DefaultButton " + props.btnClass;
 
   return (
-    <button type="button" className={btnClass} onclick={props.onclickFunction}>
+    <button type="submit" className={btnClass} onClick={props.onclickFunction}>
       {props.text != null ? props.text : "Submit"}
     </button>
   );
