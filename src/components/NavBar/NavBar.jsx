@@ -22,8 +22,9 @@ const UserInfo = (props) => {
     >
       {({ isActive }) => (
         <div>
-          Log Out{" "}
+          log out{" "}
           <span className={"profileName " + (isActive ? "active" : "")}>
+            {/* would like to get the name of the user to use here */}
             User
           </span>
         </div>

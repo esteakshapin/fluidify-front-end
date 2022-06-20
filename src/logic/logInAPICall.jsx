@@ -6,6 +6,7 @@ export async function logInAPICall(username, password) {
   data.append("username", username);
   data.append("password", password);
 
+  // header config taken from postman
   const config = {
     headers: {
       "content-type":

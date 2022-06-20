@@ -39,26 +39,3 @@
 .hidden {
   display: none;
 }
-
-/* default input */
-input {
-  padding: 0.75rem;
-  border: 0px;
-
-  /* setting width to be (size of the container - [padding left + padding right]) */
-  width: calc(
-    100% - var(--input-with-icon-padding-left) - var(--input-padding)
-  );
-
-  border-bottom: 1px solid var(--color-slate-gray);
-  outline: none;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 0.75rem;
-  line-height: 1.125rem;
-}
-
-input:focus {
-  outline: 1px solid var(--color-slate-gray);
-}
