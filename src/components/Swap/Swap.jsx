@@ -29,24 +29,28 @@ function Swap() {
                   icon="fa-user"
                   toggle={true}
                   placeholder="Please enter the recieving wallet adress"
+                  toolTipData="Address for recipient account of output tokens. If recipient is not provided, the output tokens will be transferred to the sender's account."
                 />
                 <InputWithLeadingIcon
                   title="Deadline?"
                   icon="fa-stopwatch"
                   toggle={true}
                   placeholder="Enter time in seconds for the transaction to complete"
+                  toolTipData="Amount of time in seconds for the transaction to complete, after which time it will revert. The default value is 300 seconds (5 minutes)."
                 />
                 <InputWithLeadingIcon
                   title="Slipage?"
                   icon="fa-chart-line"
                   toggle={true}
                   placeholder="Enter maximum allowable percent deviation"
+                  toolTipData="	Maximum allowable percent deviation from desired output amount for exactinput swaps or desired input amount for exactoutput swaps. Valid range of values for slippage is 0 - 100. The default value is 2%."
                 />
                 <InputWithLeadingIcon
                   title="Gas Price?"
                   icon="fa-gas-pump"
                   placeholder="Desired gas price in wei"
                   toggle={true}
+                  toolTipData="	Desired gas price in wei for transaction. If not provided, competitive gas price will be determined prior to sending the transaction to the blockchain."
                 />
               </div>
             </form>

@@ -58,6 +58,11 @@
   color: var(--color-slate-gray);
 }
 
+.fa-circle-info {
+  color: var(--color-slate-gray);
+  margin-left: 2px;
+}
+
 /* toggle switch borrowed from w3school */
 .switch {
   position: relative;
