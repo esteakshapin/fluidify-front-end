@@ -7,6 +7,7 @@ import DefaultButton from "../FormComponents/DefaultButton";
 import { TokenContext } from "../../tokenContext";
 import { logInAPICall } from "../../logic/logInAPICall.jsx";
 import ErrorAlert from "../FormComponents/ErrorAlert";
+import CompanyLogo from "./../../assets/Fluidefi_logo_wide_white-R.png";
 
 function SignIn() {
   const { setToken } = useContext(TokenContext);
@@ -53,6 +54,8 @@ function SignIn() {
     // used to take place of the body. this container will be able to center the child (signIn form)
     <div className="signInBodyContainer">
       <PaperContainer>
+        <img className="companyLogo" src={CompanyLogo} alt="Fluidefi Logo" />
+        <hr />
         <div className="signInContainer">
           <div className="titleContainer">
             <h1>Welcome Back</h1>
@@ -93,7 +96,7 @@ function SignIn() {
 
               {inputError ? (
                 <ErrorAlert
-                  message="Unable to login using given
+                  message="Unable to login using the given
                 credentials. Please try again."
                 />
               ) : null}

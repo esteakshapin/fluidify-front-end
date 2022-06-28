@@ -64,3 +64,35 @@
   align-items: center;
   justify-content: center;
 }
+
+.companyLogo,
+hr {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .signInContainer {
+    max-width: 100%;
+  }
+  .signInBodyContainer .paperContianer {
+    border-radius: 0px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .signInBodyContainer .paperContianer {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    flex-direction: row;
+  }
+  hr {
+    display: unset;
+    height: 400px;
+  }
+  .companyLogo {
+    display: unset;
+    max-width: 400px;
+    max-height: 300px;
+  }
+}
