@@ -1,0 +1,10 @@
+.alert {
+  padding: 1rem;
+  background-color: #f44336;
+  color: white;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
