@@ -18,19 +18,19 @@ function InputWithLeadingIcon(props) {
               data-tooltip={props.toolTipData}
               style={{ display: "inline-block" }}
             >
-              <i class="fa-solid fa-circle-info text-light"></i>
+              <i className="fa-solid fa-circle-info text-light"></i>
             </div>
           ) : null}
         </h3>
 
         {/* borrowed from w3school */}
         {props.toggle ? (
-          <label class="switch">
+          <label className="switch">
             <input
               type="checkbox"
               onClick={(e) => setToggleState(e.target.checked)}
             />
-            <span class="slider round"></span>
+            <span className="slider round"></span>
           </label>
         ) : (
           <div></div>

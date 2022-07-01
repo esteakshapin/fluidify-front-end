@@ -3,6 +3,9 @@ import PaperContainer from "../PaperContainer";
 import "./Swap.css";
 
 import InputWithLeadingIcon from "../FormComponents/InputWithLeadingIcon";
+import WalletInfo from "../FormComponents/WalletInfo";
+
+import { useMetaMask } from "metamask-react";
 
 function Swap() {
   return (
@@ -18,12 +21,7 @@ function Swap() {
 
             <form>
               <div className="inputGroup">
-                <InputWithLeadingIcon
-                  title="Wallet"
-                  icon="fa-wallet"
-                  type="text"
-                  placeholder="Please enter your wallet adress"
-                />
+                <WalletInfo title="Wallet" />
                 <InputWithLeadingIcon
                   title="Different Recipient?"
                   icon="fa-user"
@@ -55,7 +53,7 @@ function Swap() {
               </div>
             </form>
           </div>
-          <i class="fa-solid fa-arrow-right fa-2x"></i>
+          <i className="fa-solid fa-arrow-right fa-2x"></i>
           {/* input form */}
           <div className="form inputForm">
             <span className="formTitle">Configuration</span>
