@@ -2,11 +2,21 @@ import React from "react";
 import "./DefaultButton.css";
 
 function DefaultButton(props) {
-  const btnClass = "DefaultButton " + props.btnClass;
+  const btnClass =
+    "DefaultButton " + props.btnClass + (props.loading ? " loading" : null);
+
+  //setting default values
+  const text = props.text ? props.text : "submit";
+  const type = props.type ? props.type : "submit";
 
   return (
-    <button type="submit" className={btnClass} onClick={props.onclickFunction}>
-      {props.text != null ? props.text : "Submit"}
+    <button
+      type={type}
+      className={btnClass}
+      onClick={props.onclickFunction}
+      disabled={props.loading}
+    >
+      {!props.loading ? text : <i class="fa fa-spinner fa-spin"></i>}
     </button>
   );
 }
