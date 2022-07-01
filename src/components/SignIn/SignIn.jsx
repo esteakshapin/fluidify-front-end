@@ -6,13 +6,23 @@ import SignInFormFooter from "./SignInFormFooter";
 import DefaultButton from "../FormComponents/DefaultButton";
 import { TokenContext } from "../../tokenContext";
 import { logInAPICall } from "../../logic/logInAPICall.jsx";
-import axios from "axios";
-import { AUTH } from "../../urls";
+import ErrorAlert from "../FormComponents/ErrorAlert";
+import CompanyLogo from "./../../assets/Fluidefi_logo_wide_white-R.png";
 
 function SignIn() {
-  const { token, setToken } = useContext(TokenContext);
+  const { setToken } = useContext(TokenContext);
 
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [inputError, setInputError] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+
+  //store the state when the error occured. Will be used to remove the error outline when state is changed
+  //so user doesn't submit the same sate again. i.e. if username is entered *john* which causes an error
+  // the error outline in the username input will remian until the user inputs something other than *john*
+  const [errorState, setErrorState] = useState({
+    username: null,
+    password: null,
+  });
 
   const [formData, setFormData] = useState({
     username: "",
@@ -28,17 +38,30 @@ function SignIn() {
 
     console.log(formData);
 
+    setLoading(true);
+
     let res = await logInAPICall(formData.username, formData.password);
 
-    console.log(res);
+    setLoading(false);
 
-    setToken(res.data);
+    if (!res) {
+      setInputError(true);
+      setErrorState({
+        username: formData.username,
+        password: formData.password,
+      });
+    } else {
+      console.log(res);
+      setToken(res.data);
+    }
   };
 
   return (
     // used to take place of the body. this container will be able to center the child (signIn form)
     <div className="signInBodyContainer">
       <PaperContainer>
+        <img className="companyLogo" src={CompanyLogo} alt="Fluidefi Logo" />
+        <hr />
         <div className="signInContainer">
           <div className="titleContainer">
             <h1>Welcome Back</h1>
@@ -51,6 +74,9 @@ function SignIn() {
                 icon="fa-user"
                 value={formData.username}
                 handleChange={handleChange}
+                inputError={
+                  inputError && formData.username === errorState.username
+                }
               ></InputWithLeadingIcon>
               <InputWithLeadingIcon
                 title="password"
@@ -58,6 +84,9 @@ function SignIn() {
                 value={formData.password}
                 type="password"
                 handleChange={handleChange}
+                inputError={
+                  inputError && formData.password === errorState.password
+                }
               ></InputWithLeadingIcon>
               <div className="forgotTextWrapper">
                 <a
@@ -71,8 +100,15 @@ function SignIn() {
                 </a>
               </div>
 
+              {inputError ? (
+                <ErrorAlert
+                  message="Unable to login using the given
+                credentials. Please try again."
+                />
+              ) : null}
+
               <div className="buttonWrapper">
-                <DefaultButton></DefaultButton>
+                <DefaultButton loading={loading}></DefaultButton>
               </div>
             </div>
           </form>

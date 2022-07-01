@@ -46,6 +46,7 @@ function InputWithLeadingIcon(props) {
             placeholder={props.placeholder != null ? props.placeholder : ""}
             onChange={props.handleChange}
             type={props.type != null ? props.type : ""}
+            className={props.inputError ? "inputError" : null}
           />
           <i className={iconName}></i>
         </div>
