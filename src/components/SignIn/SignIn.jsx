@@ -14,6 +14,8 @@ function SignIn() {
 
   const [inputError, setInputError] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   //store the state when the error occured. Will be used to remove the error outline when state is changed
   //so user doesn't submit the same sate again. i.e. if username is entered *john* which causes an error
   // the error outline in the username input will remian until the user inputs something other than *john*
@@ -36,7 +38,11 @@ function SignIn() {
 
     console.log(formData);
 
+    setLoading(true);
+
     let res = await logInAPICall(formData.username, formData.password);
+
+    setLoading(false);
 
     if (!res) {
       setInputError(true);
@@ -102,7 +108,7 @@ function SignIn() {
               ) : null}
 
               <div className="buttonWrapper">
-                <DefaultButton></DefaultButton>
+                <DefaultButton loading={loading}></DefaultButton>
               </div>
             </div>
           </form>

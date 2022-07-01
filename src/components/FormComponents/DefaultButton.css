@@ -24,3 +24,7 @@
   word-break: break-word;
   border: 0;
 }
+
+.loading {
+  background: gray;
+}
