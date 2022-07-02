@@ -1,12 +1,25 @@
 import React from "react";
+import { useEffect } from "react";
+import { useRef } from "react";
 import { useState } from "react";
 import "./InputWithLeadingIcon.css";
 import "./toolTip.css";
 
 function InputWithLeadingIcon(props) {
-  const iconName = "fa-solid fa-fw " + props.icon;
+  const iconName = !props.noIconPreset
+    ? "fa-solid fa-fw " + props.icon
+    : props.icon;
   const inputId = props.title + "Input";
+  const toggleRef = useRef(null);
   const [toggleState, setToggleState] = useState(false);
+
+  useEffect(() => {
+    console.log("mounted " + inputId);
+    if (toggleRef.current && props.toggleState != null) {
+      toggleRef.current.checked = props.toggleState;
+      setToggleState(props.toggleState);
+    }
+  }, [props.toggleState]);
 
   return (
     <div className="inputAndTitleContainer">
@@ -28,7 +41,13 @@ function InputWithLeadingIcon(props) {
           <label className="switch">
             <input
               type="checkbox"
-              onClick={(e) => setToggleState(e.target.checked)}
+              ref={toggleRef}
+              onClick={(e) => {
+                setToggleState(e.target.checked);
+                if (props.toggleCallBack) {
+                  props.toggleCallBack(e.target.checked);
+                }
+              }}
             />
             <span className="slider round"></span>
           </label>
@@ -48,7 +67,7 @@ function InputWithLeadingIcon(props) {
             type={props.type != null ? props.type : ""}
             className={props.inputError ? "inputError" : null}
           />
-          <i className={iconName}></i>
+          <i class={iconName}></i>
         </div>
       ) : (
         <div></div>

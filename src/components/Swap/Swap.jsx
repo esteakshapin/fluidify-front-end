@@ -4,10 +4,12 @@ import "./Swap.css";
 
 import InputWithLeadingIcon from "../FormComponents/InputWithLeadingIcon";
 import WalletInfo from "../FormComponents/WalletInfo";
-
-import { useMetaMask } from "metamask-react";
+import DefaultButton from "../FormComponents/DefaultButton";
+import { useState } from "react";
 
 function Swap() {
+  const [mode, setMode] = useState("exactoutput");
+
   return (
     <div className="swapContainer">
       <PaperContainer>
@@ -56,34 +58,59 @@ function Swap() {
           <i className="fa-solid fa-arrow-right fa-2x"></i>
           {/* input form */}
           <div className="form inputForm">
-            <span className="formTitle">Configuration</span>
+            <span className="formTitle">Input</span>
 
             <form>
               <div className="inputGroup">
                 <InputWithLeadingIcon
-                  title="username"
-                  icon="fa-user"
+                  title="Input Token"
+                  icon="fa-arrow-right-to-bracket"
                 ></InputWithLeadingIcon>
                 <InputWithLeadingIcon
-                  title="password"
+                  title="Intermediatry Token Swaps?"
                   icon="fa-lock"
                   type="text"
+                  toggle={true}
                 ></InputWithLeadingIcon>
-                <div className="forgotTextWrapper">
-                  <a
-                    href="https://analytics.fluidefi.com/password_reset/"
-                    target="_blank"
-                    id="forgotText"
-                    rel="noreferrer"
-                  >
-                    {" "}
-                    forgot password?{" "}
-                  </a>
-                </div>
+                <InputWithLeadingIcon
+                  title="Exact Amount?"
+                  icon="fa-brands fa-ethereum"
+                  type="text"
+                  noIconPreset={true}
+                  toggle={true}
+                  toggleCallBack={(state) =>
+                    state ? setMode("exactinput") : setMode("exactoutput")
+                  }
+                  toggleState={mode === "exactinput" ? true : false}
+                ></InputWithLeadingIcon>
+              </div>
+            </form>
+
+            <span className="formTitle">Output</span>
+
+            <form>
+              <div className="inputGroup">
+                <InputWithLeadingIcon
+                  title="Output Token"
+                  icon="fa-arrow-right-from-bracket"
+                ></InputWithLeadingIcon>
+                <InputWithLeadingIcon
+                  title="Exact Amount?"
+                  icon="fa-dollar-sign"
+                  type="text"
+                  toggle={true}
+                  toggleCallBack={(state) =>
+                    state ? setMode("exactoutput") : setMode("exactinput")
+                  }
+                  toggleState={mode === "exactoutput" ? true : false}
+                ></InputWithLeadingIcon>
               </div>
             </form>
           </div>
         </div>
+        <center>
+          <DefaultButton />
+        </center>
       </PaperContainer>
     </div>
   );
