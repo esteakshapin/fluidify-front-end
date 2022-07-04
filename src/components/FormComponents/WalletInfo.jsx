@@ -3,26 +3,25 @@ import { useState, useEffect, useRef } from "react";
 import "./WalletInfo.css";
 import DefaultButton from "./DefaultButton";
 import { initializeMetaMask, accountChangeHandler } from "../../logic/metaMask";
+import { useContext } from "react";
+import { WalletContext } from "../../walletContext";
 
 function RenderMetaMask() {
+  const { walletInfo, setWalletInfo } = useContext(WalletContext);
+
   const ethereum = window.ethereum;
 
   const walletAddressRef = useRef(null);
 
-  const [metaMaskInfo, setMetaMaskInfo] = useState({
-    account: null,
-    status: "notConnected",
-    balance: null,
-    chainId: null,
-  });
-
   //initialize metamask info when component is mounted
   useEffect(() => {
-    initializeMetaMask(setMetaMaskInfo);
+    console.log("wallet context");
+    console.log(walletInfo);
+    initializeMetaMask(setWalletInfo);
 
     //setting hook for account changed
     window.ethereum.on("accountsChanged", (res) =>
-      accountChangeHandler(res[0], setMetaMaskInfo)
+      accountChangeHandler(res[0], setWalletInfo)
     );
   }, []);
 
@@ -37,9 +36,9 @@ function RenderMetaMask() {
       }, 200);
       return () => clearTimeout(timer);
     }
-  }, [metaMaskInfo.account]);
+  }, [walletInfo.account]);
 
-  switch (metaMaskInfo.status) {
+  switch (walletInfo.status) {
     case "initializing":
       return (
         <div className="connectionInfo">
@@ -53,7 +52,7 @@ function RenderMetaMask() {
         <DefaultButton
           text="Connect to MetaMask"
           btnClass="metaMaskButton"
-          onclickFunction={metaMaskInfo.connect}
+          onclickFunction={walletInfo.connect}
         ></DefaultButton>
       );
     case "connecting":
@@ -61,7 +60,7 @@ function RenderMetaMask() {
     case "connected":
       return (
         <div className="connectionInfo accountAddress" ref={walletAddressRef}>
-          {metaMaskInfo.account}
+          {walletInfo.account}
         </div>
       );
     default:
