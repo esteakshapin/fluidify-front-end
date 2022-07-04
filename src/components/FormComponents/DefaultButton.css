@@ -27,4 +27,5 @@
 
 .loading {
   background: gray;
+  cursor: default;
 }

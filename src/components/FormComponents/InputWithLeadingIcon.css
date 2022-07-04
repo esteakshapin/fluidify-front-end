@@ -18,6 +18,8 @@
   /* Background-color */
 
   color: #252424;
+
+  padding-right: 1rem;
 }
 
 .inputWithLeadingIcon {
@@ -36,9 +38,7 @@
   border: 0px;
 
   /* setting width to be (size of the container - [padding left + padding right]) */
-  width: calc(
-    100% - var(--input-with-icon-padding-left) - var(--input-padding)
-  );
+  width: calc(100% - var(--input-with-icon-padding-left) - 0.8rem);
   padding-left: var(--input-with-icon-padding-left);
 
   border-bottom: 1px solid var(--color-slate-gray);
@@ -61,6 +61,11 @@
   transform: translateY(-50%);
   font-size: 1rem;
   color: var(--color-slate-gray);
+}
+
+.fa-circle-info {
+  color: var(--color-slate-gray);
+  margin-left: 2px;
 }
 
 /* toggle switch borrowed from w3school */

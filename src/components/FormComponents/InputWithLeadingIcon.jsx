@@ -1,25 +1,55 @@
 import React from "react";
+import { useEffect } from "react";
+import { useRef } from "react";
 import { useState } from "react";
 import "./InputWithLeadingIcon.css";
+import "./toolTip.css";
 
 function InputWithLeadingIcon(props) {
-  const iconName = "fa-solid fa-fw " + props.icon;
+  const iconName = !props.noIconPreset
+    ? "fa-solid fa-fw " + props.icon
+    : props.icon;
   const inputId = props.title + "Input";
+  const toggleRef = useRef(null);
   const [toggleState, setToggleState] = useState(false);
+
+  useEffect(() => {
+    console.log("mounted " + inputId);
+    if (toggleRef.current && props.toggleState != null) {
+      toggleRef.current.checked = props.toggleState;
+      setToggleState(props.toggleState);
+    }
+  }, [props.toggleState]);
 
   return (
     <div className="inputAndTitleContainer">
       <label htmlFor={inputId} className="inputTitle">
-        <h3>{props.title}</h3>
+        <h3>
+          {props.title}{" "}
+          {props.toolTipData ? (
+            <div
+              data-tooltip={props.toolTipData}
+              style={{ display: "inline-block" }}
+            >
+              <i className="fa-solid fa-circle-info text-light"></i>
+            </div>
+          ) : null}
+        </h3>
 
         {/* borrowed from w3school */}
         {props.toggle ? (
-          <label class="switch">
+          <label className="switch">
             <input
               type="checkbox"
-              onClick={(e) => setToggleState(e.target.checked)}
+              ref={toggleRef}
+              onClick={(e) => {
+                setToggleState(e.target.checked);
+                if (props.toggleCallBack) {
+                  props.toggleCallBack(e.target.checked);
+                }
+              }}
             />
-            <span class="slider round"></span>
+            <span className="slider round"></span>
           </label>
         ) : (
           <div></div>
@@ -36,8 +66,9 @@ function InputWithLeadingIcon(props) {
             onChange={props.handleChange}
             type={props.type != null ? props.type : ""}
             className={props.inputError ? "inputError" : null}
+            disabled={props.disabled}
           />
-          <i className={iconName}></i>
+          <i class={iconName}></i>
         </div>
       ) : (
         <div></div>
