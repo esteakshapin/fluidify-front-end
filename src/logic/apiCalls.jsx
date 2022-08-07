@@ -17,7 +17,7 @@ export async function postCall({ url, header, token, data }) {
   } catch (e) {
     console.log("error");
     console.log(e);
-    res = null;
+    res = e;
   }
 
   return res;

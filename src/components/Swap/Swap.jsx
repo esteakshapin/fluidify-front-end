@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PaperContainer from "../PaperContainer";
 import "./Swap.css";
 
@@ -11,9 +11,12 @@ import { useContext } from "react";
 import { TokenContext } from "../../tokenContext";
 import { postCall } from "../../logic/apiCalls";
 import { BUILD_SWAP } from "../../urls";
+import { errorHandling } from "../../logic/swapErrorHandling";
 
 function Swap() {
   const { token } = useContext(TokenContext);
+
+  const [alerts, setAlerts] = useState([])
 
   const [mode, setMode] = useState("exactoutput");
 
@@ -44,7 +47,29 @@ function Swap() {
 
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  //form errors
+  const [amountOutError, setAmountOutError] = useState({ error: false, message: "" })
+
+
+  // implement self closing alerts
+  // useEffect(() => {
+  // let alertKey;
+  // if (alerts.length > 0) {
+  //   alertKey = alerts.length - 1;
+  //   console.log(alerts);
+  //   console.log("alert key - " + alertKey);
+
+
+  //   // setTimeout(() => {
+  //   //   console.log("timed out - " + alertKey)
+  //   //   setAlerts((prevState) => prevState.filter(item => item.key !== alertKey))
+  //   // }, 1000);
+  // }
+
+
+  // }, [alerts])
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setLoading(true);
@@ -75,9 +100,9 @@ function Swap() {
 
     data = { ...data, ...configs };
 
-    postCall({ token: token, data: data, url: BUILD_SWAP }).then((res) =>
-      console.log(res)
-    );
+    const res = await postCall({ token: token, data: data, url: BUILD_SWAP });
+
+    errorHandling(res, alerts, setAlerts, { setAmountOutError: setAmountOutError });
 
     setLoading(false);
   };
@@ -123,13 +148,13 @@ function Swap() {
                     toggleCallBack={(state) =>
                       state
                         ? setConfiguration((prevState) => ({
-                            ...prevState,
-                            differentRecipient: "",
-                          }))
+                          ...prevState,
+                          differentRecipient: "",
+                        }))
                         : setConfiguration((prevState) => ({
-                            ...prevState,
-                            differentRecipient: null,
-                          }))
+                          ...prevState,
+                          differentRecipient: null,
+                        }))
                     }
                     placeholder="Please enter the recieving wallet adress"
                     toolTipData="Address for recipient account of output tokens. If recipient is not provided, the output tokens will be transferred to the sender's account."
@@ -149,13 +174,13 @@ function Swap() {
                     toggleCallBack={(state) =>
                       state
                         ? setConfiguration((prevState) => ({
-                            ...prevState,
-                            deadline: "",
-                          }))
+                          ...prevState,
+                          deadline: "",
+                        }))
                         : setConfiguration((prevState) => ({
-                            ...prevState,
-                            deadline: null,
-                          }))
+                          ...prevState,
+                          deadline: null,
+                        }))
                     }
                     placeholder="Enter time in seconds for the transaction to complete"
                     toolTipData="Amount of time in seconds for the transaction to complete, after which time it will revert. The default value is 300 seconds (5 minutes)."
@@ -176,13 +201,13 @@ function Swap() {
                     toggleCallBack={(state) =>
                       state
                         ? setConfiguration((prevState) => ({
-                            ...prevState,
-                            slipage: "",
-                          }))
+                          ...prevState,
+                          slipage: "",
+                        }))
                         : setConfiguration((prevState) => ({
-                            ...prevState,
-                            slipage: null,
-                          }))
+                          ...prevState,
+                          slipage: null,
+                        }))
                     }
                     placeholder="Enter maximum allowable percent deviation"
                     toolTipData="	Maximum allowable percent deviation from desired output amount for exactinput swaps or desired input amount for exactoutput swaps. Valid range of values for slippage is 0 - 100. The default value is 2%."
@@ -203,13 +228,13 @@ function Swap() {
                     toggleCallBack={(state) =>
                       state
                         ? setConfiguration((prevState) => ({
-                            ...prevState,
-                            gasPrice: "",
-                          }))
+                          ...prevState,
+                          gasPrice: "",
+                        }))
                         : setConfiguration((prevState) => ({
-                            ...prevState,
-                            gasPrice: null,
-                          }))
+                          ...prevState,
+                          gasPrice: null,
+                        }))
                     }
                     toolTipData="	Desired gas price in wei for transaction. If not provided, competitive gas price will be determined prior to sending the transaction to the blockchain."
                   />
@@ -250,13 +275,13 @@ function Swap() {
                     toggleCallBack={(state) =>
                       state
                         ? setInputFormData((prevState) => ({
-                            ...prevState,
-                            Intermediatry: "",
-                          }))
+                          ...prevState,
+                          Intermediatry: "",
+                        }))
                         : setInputFormData((prevState) => ({
-                            ...prevState,
-                            Intermediatry: null,
-                          }))
+                          ...prevState,
+                          Intermediatry: null,
+                        }))
                     }
                   ></InputWithLeadingIcon>
                   <InputWithLeadingIcon
@@ -311,6 +336,7 @@ function Swap() {
                       state ? setMode("exactoutput") : setMode("exactinput")
                     }
                     toggleState={mode === "exactoutput" ? true : false}
+                    inputError={amountOutError.error}
                   ></InputWithLeadingIcon>
                 </div>
               </form>
@@ -321,6 +347,12 @@ function Swap() {
         <center>
           <DefaultButton loading={loading} onclickFunction={handleSubmit} />
         </center>
+
+
+        <div className="floatingAlert">
+          {alerts}
+        </div>
+
       </PaperContainer>
     </div>
   );

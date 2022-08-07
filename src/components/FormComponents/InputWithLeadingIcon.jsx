@@ -57,19 +57,26 @@ function InputWithLeadingIcon(props) {
       </label>
 
       {!props.toggle || toggleState ? (
-        <div className="inputWithLeadingIcon">
-          <input
-            name={props.title}
-            id={inputId}
-            value={props.value}
-            placeholder={props.placeholder != null ? props.placeholder : ""}
-            onChange={props.handleChange}
-            type={props.type != null ? props.type : ""}
-            className={props.inputError ? "inputError" : null}
-            disabled={props.disabled}
-          />
-          <i class={iconName}></i>
+        <div>
+          <div className="inputWithLeadingIcon">
+            <input
+              name={props.title}
+              id={inputId}
+              value={props.value}
+              placeholder={props.placeholder != null ? props.placeholder : ""}
+              onChange={props.handleChange}
+              type={props.type != null ? props.type : ""}
+              className={props.inputError ? "inputError" : null}
+              disabled={props.disabled}
+            />
+            <i class={iconName}></i>
+          </div>
+          <div class="alert alert-danger inputErrorMessage" role="alert">
+            This is a danger alert—check it out! dad adasdsaas dasd as d
+          </div>
         </div>
+
+
       ) : (
         <div></div>
       )}

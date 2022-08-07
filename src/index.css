@@ -8,6 +8,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.floatingAlert {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
+.xButton {
+  border: 0;
+  background: none;
+  opacity: 0.8;
+  font-weight: bold;
+  transform: scale(1.2);
+  color: var(--color-white);
+  float: right;
+}
+
+.xButton:hover {
+  opacity: 1;
+  transform: scale(1.5);
+  color: black;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
