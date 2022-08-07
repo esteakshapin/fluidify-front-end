@@ -18,6 +18,8 @@
   /* Background-color */
 
   color: #252424;
+
+  padding-right: 1rem;
 }
 
 .inputWithLeadingIcon {
@@ -36,9 +38,7 @@
   border: 0px;
 
   /* setting width to be (size of the container - [padding left + padding right]) */
-  width: calc(
-    100% - var(--input-with-icon-padding-left) - var(--input-padding)
-  );
+  width: calc(100% - var(--input-with-icon-padding-left) - 0.8rem);
   padding-left: var(--input-with-icon-padding-left);
 
   border-bottom: 1px solid var(--color-slate-gray);
@@ -48,6 +48,13 @@
   font-weight: 400;
   font-size: 0.75rem;
   line-height: 1.125rem;
+}
+
+.inputErrorMessage {
+  /* borrowed from input */
+  --input-with-icon-padding-left: 3rem;
+  margin-top: .5rem;
+  width: calc(100% - var(--input-with-icon-padding-left) - 0.8rem);
 }
 
 .inputWithLeadingIcon input:focus {
@@ -61,6 +68,11 @@
   transform: translateY(-50%);
   font-size: 1rem;
   color: var(--color-slate-gray);
+}
+
+.fa-circle-info {
+  color: var(--color-slate-gray);
+  margin-left: 2px;
 }
 
 /* toggle switch borrowed from w3school */
@@ -101,15 +113,15 @@
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: var(--color-light-green);
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px var(--color-light-green);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   --transform-px: 16px;
   -webkit-transform: translateX(var(--transform-px));
   -ms-transform: translateX(var(--transform-px));

@@ -18,7 +18,8 @@ export async function logInAPICall(username, password) {
   try {
     res = await axios.post(AUTH, data, config);
   } catch (err) {
-    console.log("error");
+    console.log("Log in error");
+    console.log(err);
     res = null;
   }
 

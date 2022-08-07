@@ -1,0 +1,19 @@
+.inputAndTitleContainer .metaMaskButton {
+  background-color: var(--color-green);
+}
+
+.accountAddress {
+  border: 1px dashed gray;
+  border-bottom: 1px solid gray;
+  color: gray;
+}
+
+.connectionInfo {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  overflow: auto;
+  padding: 0.3rem 1rem;
+}

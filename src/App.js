@@ -8,10 +8,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 import Swap from "./components/Swap/Swap";
 
-const Home = () => {
-  return <div style={{ color: "blue", backgroundColor: "red" }}>HOME</div>;
-};
-
 function App() {
   const [token, setToken] = useState(null);
 
@@ -26,7 +22,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={token ? <Home></Home> : <Navigate to="/signIn" />}
+              element={token ? <div>Home</div> : <Navigate to="/signIn" />}
             ></Route>
             <Route
               path="/swap"
